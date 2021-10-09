@@ -34,7 +34,9 @@ class user_dao:
             conn=cx_Oracle.connect(user="TEAM404", password="1234", dsn="xe")
             cur = conn.cursor()
             try:
+                print(food_counts)
                 for i in range(food_counts):
+                    print(i)
                     cur.execute("insert into food values (:fid, :fname, :famount, :fcal, :fcarboh, :fprotein, :ffat)",\
                              fid=food['FID'][i],fname=food['FNAME'][i],famount=food['FAMOUNT'][i],
                              fcal=food['FCAL'][i],fcarboh=food['FCARBOH'][i],fprotein=food['FPROTEIN'][i],
@@ -102,14 +104,14 @@ if __name__ == "__main__":
     # msg = user_dao.user_insert(data)
     # print(msg)
 
-    # xlsx = pd.read_csv('foodtable1.csv',encoding='cp949')
-    # len(xlsx)
-    # menus = xlsx.to_dict('list')
-    # print(menus,len(xlsx))
-    # print(user_dao.food_insert(menus,len(xlsx)))
+    xlsx = pd.read_csv('foodtable1.csv',encoding='cp949')
+    len(xlsx)
+    menus = xlsx.to_dict('list')
+    print(menus,len(xlsx))
+    print(user_dao.food_insert(menus,len(xlsx)))
 
 
-    print(user_dao.food_select('F10'))
+    # print(user_dao.food_select('F10'))
 
     # def userSearch(self, userid):
     #     try:
